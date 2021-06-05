@@ -35,7 +35,7 @@ class Button {
   void (*action)(ButtonData data);
 
   public:
-  Button(int pin, ButtonData data, void (*action)(ButtonData data), bool onRise = false) {
+  Button(int pin, ButtonData data, void (*action)(ButtonData data)) {
     this->currentPin = pin;
     this->data = data;
     this->action = action;
