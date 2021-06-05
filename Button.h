@@ -6,14 +6,14 @@
  * // some data to send to action on press
  * int bData = ... 
  * 
- * Button b(PIN, &bData, handleButton)
- * 
  * void handleButton(void *data) {
  *   // Handle the button press
  * }
  * 
+ * Button b(PIN, &bData, handleButton)
+ * 
  * void loop() {
- *    button->test();
+ *    b->test();
  * }
  */
 
@@ -25,17 +25,17 @@ typedef void * ButtonData;
 class Button {
   int debounceDelay = BUTTON_DEBOUNCE;
 
-  int currentPin;
-  ButtonData data;
-  void (*action)(ButtonData data);
-
   int currentValue;
   int tempValue;
 
   unsigned long lastTime = 0;
 
+  int currentPin;
+  ButtonData data;
+  void (*action)(ButtonData data);
+
   public:
-  Button(int pin, ButtonData data, void (*action)(ButtonData data)) {
+  Button(int pin, ButtonData data, void (*action)(ButtonData data), bool onRise = false) {
     this->currentPin = pin;
     this->data = data;
     this->action = action;
