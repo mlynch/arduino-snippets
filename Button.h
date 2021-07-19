@@ -12,8 +12,11 @@
  * 
  * Button b(PIN, &bData, handleButton)
  * 
+ * void setup() {
+ *   b.init();
+ * }
  * void loop() {
- *    b->test();
+ *    b.test();
  * }
  */
 
@@ -39,6 +42,10 @@ class Button {
     this->currentPin = pin;
     this->data = data;
     this->action = action;
+  }
+
+  void init() {
+    pinMode(this->currentPin, INPUT_PULLUP);
   }
 
   int read() {
